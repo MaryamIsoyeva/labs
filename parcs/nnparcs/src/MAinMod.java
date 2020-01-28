@@ -49,7 +49,8 @@ public class MAinMod {
 
         System.out.println("Waiting for result...");
         for(channel chan: chans){
-            byte[] m;
+            int length = chan.readInt();
+            byte[] m = new byte[length];
             chan.read(m);
             try {
                 HashMap<List<String>, Integer> d = (HashMap)DataToTransf.toObject(m); //DataToTransf.toObject(m);

@@ -21,7 +21,8 @@ public class NN implements AM {
         }
         try {
             byte[] b= DataToTransf.toByteArray(ml);
-            info.parent.write(b)
+            info.parent.write(b.length);
+            info.parent.write(b);
 //            System.out.println(ByteUtil.toObject(b));
         } catch (IOException | ClassNotFoundException e) {
             e.printStackTrace();
