@@ -2,6 +2,8 @@ import java.util.List;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Arrays;
+import java.io.IOException;
+import java.io.*;
 import parcs.*;
 
 public class NN implements AM {
@@ -15,7 +17,7 @@ public class NN implements AM {
         int n = 3;
         int count = 0;
         for(int i = 0; i <= words.length - n; ++i){
-            List<String> l = new List<String>(Arrays.asList(Arrays.copyOfRange(words, i, i+n)));
+            List<String> l = new ArrayList<String>(Arrays.asList(Arrays.copyOfRange(words, i, i+n)));
             count = ml.getOrDefault(l, 0);
             ml.put(l, count + 1);
         }
