@@ -26,7 +26,7 @@ public class NN implements AM {
             info.parent.write(b.length);
             info.parent.write(b);
 //            System.out.println(ByteUtil.toObject(b));
-        } catch (IOException | ClassNotFoundException e) {
+        } catch (IOException e) {
             e.printStackTrace();
         }
 
