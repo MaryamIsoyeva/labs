@@ -2,9 +2,15 @@ import java.util.List;
 import java.util.ArrayList;
 import java.io.Serializable;
 import java.util.HashMap;
+import java.io.*;
+import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
 
 public class DataToTransf implements Serializable {
-    HashMap<String, Int> grammap;
+    HashMap<String, Integer> grammap;
     private int id;
     private int time;
 
@@ -14,7 +20,7 @@ public class DataToTransf implements Serializable {
         this.grammap = new HashMap<>();
     }
 
-    public DataToTransf(HashMap<String, Int> gram_map){
+    public DataToTransf(HashMap<String, Integer> gram_map){
         this.grammap = gram_map;
     }
 
