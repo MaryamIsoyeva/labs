@@ -29,12 +29,14 @@ public class MAinMod {
             p.execute("NN");
             if(nextPos == -1){
                 c.write(x.substring(pos));
+                pos = (i+1)*len;
             }
             else {
                 c.write(x.substring(pos, nextPos));
+                pos = nextPos + 1;
             }
             chans.add(c);
-            pos = nextPos + 1;
+
         }
 
 
