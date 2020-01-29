@@ -21,15 +21,13 @@ public class NN implements AM {
             count = ml.getOrDefault(l, 0);
             ml.put(l, count + 1);
         }
-        try {
+
             DataToTransf d = new DataToTransf(ml);
 //            byte[] b= DataToTransf.toByteArray(ml);
 //            info.parent.write(b.length);
             info.parent.write(d);
 //            System.out.println(ByteUtil.toObject(b));
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
+        
 
 //        DataToTransf d = new DataToTransf(ml);
 //        info.parent.write(d);
