@@ -10,7 +10,7 @@ import java.io.ObjectInputStream;
 import java.io.ObjectOutputStream;
 
 public class DataToTransf implements Serializable {
-    public HashMap<String, Integer> grammap;
+    public HashMap<List<String>, Integer> grammap;
     private int id;
     private int time;
 
