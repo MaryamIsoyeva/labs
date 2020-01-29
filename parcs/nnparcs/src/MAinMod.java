@@ -25,12 +25,12 @@ public class MAinMod {
         for(int i = 0; i < numOfPoints; ++i){
             point p = info.createPoint();
             channel c = p.createChannel();
-            nextPos = x.substring(pos, (i+1)*len).indexOf(' ', pos + len);
+            nextPos = (i+1)*len; //x.substring(pos, (i+1)*len).indexOf(" ", pos + len);
             p.execute("NN");
-            if(nextPos == -1){
+            if(/*nextPos == -1*/ i == numOfPoints -1){
                 c.write(x.substring(pos));
                 System.out.println(nextPos);
-                pos = (i+1)*len;
+//                pos = (i+1)*len;
             }
             else {
                 System.out.println(nextPos);
