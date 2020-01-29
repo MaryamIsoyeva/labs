@@ -64,7 +64,7 @@ public class MAinMod {
                 dat.grammap.forEach((l, v) -> ml.merge(l, v, Integer::sum));
 
 //            DataToTransf d = (DataToTransf)chan.readObject();
-            } catch (IOException | ClassNotFoundException e) {
+            } catch (ClassNotFoundException e) {
                 e.printStackTrace();
             }
 

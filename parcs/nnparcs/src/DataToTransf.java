@@ -20,7 +20,7 @@ public class DataToTransf implements Serializable {
         this.grammap = new HashMap<>();
     }
 
-    public DataToTransf(HashMap<String, Integer> gram_map){
+    public DataToTransf(HashMap<List<String>, Integer> gram_map){
         this.grammap = gram_map;
     }
 
