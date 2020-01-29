@@ -29,9 +29,11 @@ public class MAinMod {
             p.execute("NN");
             if(nextPos == -1){
                 c.write(x.substring(pos));
+                System.out.println(nextPos);
                 pos = (i+1)*len;
             }
             else {
+                System.out.println(nextPos);
                 c.write(x.substring(pos, nextPos));
                 pos = nextPos + 1;
             }
@@ -52,6 +54,8 @@ public class MAinMod {
         System.out.println("Waiting for result...");
         for(channel chan: chans){
             int length = chan.readInt();
+            System.out.println("length");
+            System.out.println(length);
             byte[] m = new byte[length];
             chan.read(m);
             try {
