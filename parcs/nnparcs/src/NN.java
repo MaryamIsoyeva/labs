@@ -27,7 +27,7 @@ public class NN implements AM {
 //            info.parent.write(b.length);
             info.parent.write(d);
 //            System.out.println(ByteUtil.toObject(b));
-        
+
 
 //        DataToTransf d = new DataToTransf(ml);
 //        info.parent.write(d);

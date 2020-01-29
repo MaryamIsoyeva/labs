@@ -58,6 +58,12 @@ public class MAinMod {
 //            System.out.println(length);
 //            byte[] m = new byte[length];
 //            chan.read(m);
+            try {
+                Thread.sleep(30000);
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+                return;
+            }
             DataToTransf dat = (DataToTransf)chan.readObject();
 
 //                HashMap<List<String>, Integer> d = (HashMap)DataToTransf.toObject(m); //DataToTransf.toObject(m);
