@@ -59,14 +59,12 @@ public class MAinMod {
 //            byte[] m = new byte[length];
 //            chan.read(m);
             DataToTransf dat = (DataToTransf)chan.readObject();
-            try {
+
 //                HashMap<List<String>, Integer> d = (HashMap)DataToTransf.toObject(m); //DataToTransf.toObject(m);
                 dat.grammap.forEach((l, v) -> ml.merge(l, v, Integer::sum));
 
 //            DataToTransf d = (DataToTransf)chan.readObject();
-            } catch (ClassNotFoundException e) {
-                e.printStackTrace();
-            }
+
 
         }
         try{
