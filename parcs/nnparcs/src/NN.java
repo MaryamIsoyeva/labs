@@ -22,9 +22,10 @@ public class NN implements AM {
             ml.put(l, count + 1);
         }
         try {
-            byte[] b= DataToTransf.toByteArray(ml);
-            info.parent.write(b.length);
-            info.parent.write(b);
+            DataToTransf d = new DataToTransf(ml);
+//            byte[] b= DataToTransf.toByteArray(ml);
+//            info.parent.write(b.length);
+            info.parent.write(d);
 //            System.out.println(ByteUtil.toObject(b));
         } catch (IOException e) {
             e.printStackTrace();

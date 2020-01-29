@@ -53,14 +53,15 @@ public class MAinMod {
 
         System.out.println("Waiting for result...");
         for(channel chan: chans){
-            int length = chan.readInt();
-            System.out.println("length");
-            System.out.println(length);
-            byte[] m = new byte[length];
-            chan.read(m);
+//            int length = chan.readInt();
+//            System.out.println("length");
+//            System.out.println(length);
+//            byte[] m = new byte[length];
+//            chan.read(m);
+            DataToTransf dat = (DataToTransf)chan.readObject();
             try {
-                HashMap<List<String>, Integer> d = (HashMap)DataToTransf.toObject(m); //DataToTransf.toObject(m);
-                d.forEach((l, v) -> ml.merge(l, v, Integer::sum));
+//                HashMap<List<String>, Integer> d = (HashMap)DataToTransf.toObject(m); //DataToTransf.toObject(m);
+                dat.grammap.forEach((l, v) -> ml.merge(l, v, Integer::sum));
 
 //            DataToTransf d = (DataToTransf)chan.readObject();
             } catch (IOException | ClassNotFoundException e) {
