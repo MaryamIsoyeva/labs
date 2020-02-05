@@ -16,30 +16,35 @@ public class MAinMod {
         AMInfo info = new AMInfo(curtask, null);
         byte[] n = fromFile(curtask.findFile("input"));
         String x = new String(n);
-        int numOfPoints = 3;
-        int len = x.length() / numOfPoints;
-        List<channel> chans = new ArrayList<>();
-        HashMap<List<String>, Integer> ml = new HashMap<List<String>, Integer>();
-        int pos = 0;
-        int nextPos = 0;
-        for(int i = 0; i < numOfPoints; ++i){
-            point p = info.createPoint();
-            channel c = p.createChannel();
-            nextPos = (i+1)*len; //x.substring(pos, (i+1)*len).indexOf(" ", pos + len);
-            p.execute("NN");
-            if(/*nextPos == -1*/ i == numOfPoints -1){
-                c.write(x.substring(pos));
-                System.out.println(nextPos);
-//                pos = (i+1)*len;
-            }
-            else {
-                System.out.println(nextPos);
-                c.write(x.substring(pos, nextPos));
-                pos = nextPos + 1;
-            }
-            chans.add(c);
+        DataToTransf d = new DataToTransf(x);
+        point p = info.createPoint();
+        channel c = p.createChannel();
+        c.write(d);
 
-        }
+//        int numOfPoints = 3;
+//        int len = x.length() / numOfPoints;
+//        List<channel> chans = new ArrayList<>();
+//        HashMap<List<String>, Integer> ml = new HashMap<List<String>, Integer>();
+//        int pos = 0;
+//        int nextPos = 0;
+//        for(int i = 0; i < numOfPoints; ++i){
+//            point p = info.createPoint();
+//            channel c = p.createChannel();
+//            nextPos = (i+1)*len; //x.substring(pos, (i+1)*len).indexOf(" ", pos + len);
+//            p.execute("NN");
+//            if(/*nextPos == -1*/ i == numOfPoints -1){
+//                c.write(x.substring(pos));
+//                System.out.println(nextPos);
+////                pos = (i+1)*len;
+//            }
+//            else {
+//                System.out.println(nextPos);
+//                c.write(x.substring(pos, nextPos));
+//                pos = nextPos + 1;
+//            }
+//            chans.add(c);
+//
+//        }
 
 
 //        Node n = fromFile(curtask.findFile("input"));
@@ -52,30 +57,38 @@ public class MAinMod {
 //        c.write(n);
 
         System.out.println("Waiting for result...");
-        for(channel chan: chans){
-//            int length = chan.readInt();
-//            System.out.println("length");
-//            System.out.println(length);
-//            byte[] m = new byte[length];
-//            chan.read(m);
-            try {
-                Thread.sleep(30000);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-                return;
-            }
-            DataToTransf dat = (DataToTransf)chan.readObject();
-
-//                HashMap<List<String>, Integer> d = (HashMap)DataToTransf.toObject(m); //DataToTransf.toObject(m);
-                dat.grammap.forEach((l, v) -> ml.merge(l, v, Integer::sum));
-
-//            DataToTransf d = (DataToTransf)chan.readObject();
 
 
-        }
+
+//        for(channel chan: chans){
+////            int length = chan.readInt();
+////            System.out.println("length");
+////            System.out.println(length);
+////            byte[] m = new byte[length];
+////            chan.read(m);
+//            try {
+//                Thread.sleep(30000);
+//            } catch (InterruptedException e) {
+//                e.printStackTrace();
+//                return;
+//            }
+//            DataToTransf dat = (DataToTransf)chan.readObject();
+//
+////                HashMap<List<String>, Integer> d = (HashMap)DataToTransf.toObject(m); //DataToTransf.toObject(m);
+//                dat.grammap.forEach((l, v) -> ml.merge(l, v, Integer::sum));
+//
+////            DataToTransf d = (DataToTransf)chan.readObject();
+//
+//
+//        }
+
+
+        DataToTransf p = (DataToTransf)info.parent.readObject();
+
         try{
             PrintWriter out = new PrintWriter(new FileWriter(info.curtask.addPath("NN.res")));
-            out.println(ml);
+//            out.println(ml);
+            out.println(p.grammap);
             out.close();
         } catch (IOException e) {e.printStackTrace(); return;}
         System.out.println("Result: " + ml.keySet().toArray()[0]);

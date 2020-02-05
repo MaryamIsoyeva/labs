@@ -20,7 +20,6 @@ public class DFS implements AM {
         long sum = n.getTime();
         for (channel c: chans) {
             sum += c.readLong();
-        }
         try {
             Thread.sleep(n.getTime());
         } catch (InterruptedException e) {
@@ -28,6 +27,7 @@ public class DFS implements AM {
             return;
         }
         System.out.println("[" + n.getId() + "] Build finished.");
-        info.parent.write(sum);
-    }
+        info.parent.write(sum);        }
+
+}
 }
