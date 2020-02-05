@@ -11,7 +11,7 @@ public class NN implements AM {
         DataToTransf dataToTransf = (DataToTransf)info.parent.readObject();
 
         if(dataToTransf.exec == false){
-            string x = dataToTransf.s;
+            String x = dataToTransf.s;
             int numOfPoints = 3;
             int len = x.length() / numOfPoints;
             List<channel> chans = new ArrayList<>();
@@ -61,7 +61,7 @@ public class NN implements AM {
             info.parent.write(objDat);
         }
         else{
-            String[] words = s.split("\\W+");
+            String[] words = dataToTransf.s.split("\\W+");
             HashMap<List<String>, Integer> ml = new HashMap<List<String>, Integer>();
             int n = 3;
             int count = 0;
