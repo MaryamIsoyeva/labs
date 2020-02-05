@@ -91,7 +91,7 @@ public class MAinMod {
             out.println(mapped.grammap);
             out.close();
         } catch (IOException e) {e.printStackTrace(); return;}
-        System.out.println("Result: " + ml.keySet().toArray()[0]);
+//        System.out.println("Result: " + ml.keySet().toArray()[0]);
         curtask.end();
     }
 
