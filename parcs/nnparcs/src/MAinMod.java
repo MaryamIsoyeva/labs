@@ -83,12 +83,12 @@ public class MAinMod {
 //        }
 
 
-        DataToTransf p = (DataToTransf)info.parent.readObject();
+        DataToTransf mapped = (DataToTransf)c.readObject();
 
         try{
             PrintWriter out = new PrintWriter(new FileWriter(info.curtask.addPath("NN.res")));
 //            out.println(ml);
-            out.println(p.grammap);
+            out.println(mapped.grammap);
             out.close();
         } catch (IOException e) {e.printStackTrace(); return;}
         System.out.println("Result: " + ml.keySet().toArray()[0]);

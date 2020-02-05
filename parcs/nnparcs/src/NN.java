@@ -8,10 +8,10 @@ import parcs.*;
 
 public class NN implements AM {
     public void run(AMInfo info) {
-        DataToTransf p = (DataToTransf)info.parent.readObject();
+        DataToTransf dataToTransf = (DataToTransf)info.parent.readObject();
 
-        if(p.exec == false){
-            string x = p.s;
+        if(dataToTransf.exec == false){
+            string x = dataToTransf.s;
             int numOfPoints = 3;
             int len = x.length() / numOfPoints;
             List<channel> chans = new ArrayList<>();
