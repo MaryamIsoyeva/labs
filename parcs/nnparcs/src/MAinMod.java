@@ -82,11 +82,16 @@ public class MAinMod {
 //
 //        }
 
-
+        try {
+            Thread.sleep(30000);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+            return;
+        }
         DataToTransf mapped = (DataToTransf)c.readObject();
 
         try{
-            PrintWriter out = new PrintWriter(new FileWriter(info.curtask.addPath("NN.res")));
+            PrintWriter out = new PrintWriter(new FileWriter(info.curtask.addPath("NN.txt")));
 //            out.println(ml);
 //            out.println(mapped.grammap);
             System.out.println(mapped.grammap == null ? "null" : mapped.grammap);
