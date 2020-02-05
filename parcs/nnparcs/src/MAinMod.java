@@ -89,7 +89,7 @@ public class MAinMod {
             PrintWriter out = new PrintWriter(new FileWriter(info.curtask.addPath("NN.res")));
 //            out.println(ml);
 //            out.println(mapped.grammap);
-            System.out.println(mapped.grammap == null ? "null" : mapped.grammap)
+            System.out.println(mapped.grammap == null ? "null" : mapped.grammap);
             out.close();
         } catch (IOException e) {e.printStackTrace(); return;}
 //        System.out.println("Result: " + ml.keySet().toArray()[0]);
