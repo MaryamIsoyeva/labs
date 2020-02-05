@@ -12,7 +12,7 @@ import java.io.ObjectOutputStream;
 public class DataToTransf implements Serializable {
     public HashMap<List<String>, Integer> grammap;
     public String s;
-    public bool exec;
+    public boolean exec;
     private int id;
     private int time;
 
