@@ -12,6 +12,7 @@ public class NN implements AM {
 //
         if(dataToTransf.exec == false){
             int numOfPoints = 3;
+            String x = dataToTransf.s;
             int len = x.length() / numOfPoints;
             List<channel> chans = new ArrayList<>();
             HashMap<List<String>, Integer> ml = new HashMap<List<String>, Integer>();
@@ -70,7 +71,7 @@ public class NN implements AM {
             info.parent.write(mapped);*/
 
             DataToTransf datToWrite = new DataToTransf(ml);
-            info.parent.write(datToWrite.size());
+            info.parent.write(datToWrite.grammap.size());
 //            String x = dataToTransf.s;
 //            int numOfPoints = 3;
 //            int len = x.length() / numOfPoints;
