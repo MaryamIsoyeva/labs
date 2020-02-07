@@ -13,7 +13,7 @@ public class MAinMod {
     public static void main(String[] args) throws Exception {
         task curtask = new task();
         curtask.addJarFile("NN.jar");
-        Node n = fromFile(curtask.findFile("input"));
+//        Node n = fromFile(curtask.findFile("input"));
         byte[] n = fromFile(curtask.findFile("input"));
         String x = new String(n);
         DataToTransf d = new DataToTransf(x);
