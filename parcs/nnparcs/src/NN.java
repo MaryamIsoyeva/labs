@@ -21,7 +21,8 @@ public class NN implements AM {
                 count = ml.getOrDefault(l, 0);
                 ml.put(l, count + 1);
             }
-            info.parent.write(ml.size());
+            DataToTransf mapped = new DataToTransf(ml);
+            info.parent.write(mapped);
 //            String x = dataToTransf.s;
 //            int numOfPoints = 3;
 //            int len = x.length() / numOfPoints;
@@ -46,6 +47,9 @@ public class NN implements AM {
 //                pos = nextPos + 1;
 //            }
 //            chans.add(c);
+        }
+        else{
+
         }
 //            for(channel chan: chans){
 ////            int length = chan.readInt();
