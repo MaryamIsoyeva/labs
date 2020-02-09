@@ -71,7 +71,8 @@ public class NN implements AM {
             info.parent.write(mapped);*/
 
             DataToTransf datToWrite = new DataToTransf(ml);
-            info.parent.write(datToWrite.grammap.size());
+//            info.parent.write(datToWrite.grammap.size());
+            info.parent.write(datToWrite);
 //            String x = dataToTransf.s;
 //            int numOfPoints = 3;
 //            int len = x.length() / numOfPoints;

@@ -24,8 +24,8 @@ public class MAinMod {
         c.write(d);
 
         System.out.println("Waiting for result...");
-//        DataToTransf mapped = (DataToTransf)c.readObject();
-        System.out.println("Result: " + c.readInt());
+        DataToTransf mapped = (DataToTransf)c.readObject();
+        System.out.println("Result: " + mapped.size());
         curtask.end();
 
 //        task curtask = new task();
