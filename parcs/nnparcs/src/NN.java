@@ -101,6 +101,7 @@ public class NN implements AM {
         else{
             String[] words = dataToTransf.s.split("\\W+");
             HashMap<List<String>, Integer> ml = new HashMap<List<String>, Integer>();
+            HashMap<String, HashMap<String, Integer>> bigram = new HashMap<String, HashMap<String, Integer>>();
             int n = 3;
             int count = 0;
             for(int i = 0; i <= words.length - n; ++i){
@@ -108,7 +109,7 @@ public class NN implements AM {
                 count = ml.getOrDefault(l, 0);
                 ml.put(l, count + 1);
             }
-
+            
             DataToTransf d = new DataToTransf(ml);
 //            byte[] b= DataToTransf.toByteArray(ml);
 //            info.parent.write(b.length);

@@ -11,6 +11,7 @@ import java.io.ObjectOutputStream;
 
 public class DataToTransf implements Serializable {
     public HashMap<List<String>, Integer> grammap;
+    public HashMap<String, HashMap<String, Integer>> bigram;
     public String s;
     public boolean exec;
     private int id;
@@ -24,6 +25,10 @@ public class DataToTransf implements Serializable {
 
     public DataToTransf(HashMap<List<String>, Integer> gram_map){
         this.grammap = gram_map;
+        this.exec = false;
+    }
+    public DataToTransf(HashMap<String, HashMap<String, Integer>> bi_gram){
+        this.bigram = bi_gram;
         this.exec = false;
     }
     public DataToTransf(String str){
