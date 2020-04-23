@@ -30,13 +30,13 @@ public class DataToTransf implements Serializable {
     
     public String predict;
     public float predictedProbability;
-    public List<float> predictionSet = new ArrayList<>();
+    
         
         public Map<String, Integer> good = new HashMap<String, Integer>();
         public Map<String, Integer> bad = new HashMap<String, Integer>();
         
-        public String[] specialCharacters = { ",", "#", ";", "\"", "\'", };
-        public String empty = "";
+        static String[] specialCharacters = { ",", "#", ";", "\"", "\'", };
+        static String empty = "";
     
     DataToTransf(String m, String n, boolean trainbool,String pre,float f){
         this.spamstring=m;
@@ -200,19 +200,19 @@ public class DataToTransf implements Serializable {
             return (product / (product + oneMinusTerm));
         }
         
-        static String[] pullNStore(String nub, String[] files){
-            List<String> names = new ArrayList<String>();
-//            names.add(
-            for(String file : files){
-                String name = new File(file).getName();
-                name = name.substring( 0, name.indexOf("."));
-                names.add(nub+name);
-                store( nub + name, Counter.getURL(file));
-                print( "downloading :"+file +" as " + nub+name);
-            }
-            return names.toArray( new String[names.size()]);
-        }
-        
+//        static String[] pullNStore(String nub, String[] files){
+//            List<String> names = new ArrayList<String>();
+////            names.add(
+//            for(String file : files){
+//                String name = new File(file).getName();
+//                name = name.substring( 0, name.indexOf("."));
+//                names.add(nub+name);
+//                store( nub + name, Counter.getURL(file));
+//                print( "downloading :"+file +" as " + nub+name);
+//            }
+//            return names.toArray( new String[names.size()]);
+//        }
+//        
         /*public static void main(String[] args) {
             
             String[] dickens = {"http://www.gutenberg.org/ebooks/1400.txt.utf8",

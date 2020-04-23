@@ -14,7 +14,7 @@ public class MAinMod {
         task curtask = new task();
         curtask.addJarFile("NN.jar");
 //        Node n = fromFile(curtask.findFile("input"));
-        DataToTransf n = fromFile();
+        DataToTransf n = fromFile(curtask);
         
 //        byte[] n = fromFile(curtask.findFile("input"));
 //        String x = new String(n);
@@ -23,7 +23,7 @@ public class MAinMod {
         point p = info.createPoint();
         channel c = p.createChannel();
         p.execute("NN");
-        c.write(т);
+        c.write(n);
 
         System.out.println("Waiting for result...");
 //        DataToTransf mapped = (DataToTransf)c.readObject();
@@ -127,7 +127,7 @@ public class MAinMod {
 
 
 
-    public static DataToTransf fromFile() throws Exception {
+    public static DataToTransf fromFile(task curtask, String predictionString) throws Exception {
         try {
             String filenamespam = curtask.findFile("inputspam");
             String filenameham = curtask.findFile("inputham");
@@ -146,7 +146,7 @@ public class MAinMod {
             hamfs = null;
             String n = new String(h);
             
-            DataToTransf dataToTrans = new DataToTransf(m, n, false);
+            DataToTransf dataToTrans = new DataToTransf(m, n, false, predictionString, 0);
 
             return dataToTrans;
         } catch (Exception e) {
