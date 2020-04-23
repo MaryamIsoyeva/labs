@@ -129,8 +129,8 @@ public class MAinMod {
 
     public static DataToTransf fromFile(task curtask, String predictionString) throws Exception {
         try {
-            String filenamespam = curtask.findFile("inputspam");
-            String filenameham = curtask.findFile("inputham");
+            String filenamespam = curtask.findFile("./inputspam");
+            String filenameham = curtask.findFile("./inputham");
 //            String path = filename;
             FileInputStream fisspam = new FileInputStream(new File(filenamespam));
             byte[] b = new byte[fisspam.available()];
