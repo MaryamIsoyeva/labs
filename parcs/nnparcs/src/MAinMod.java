@@ -132,7 +132,7 @@ public class MAinMod {
         try {
             
 //            String path = filename;
-            Scanner sc = new Scanner(new File(filename));
+            Scanner sc = new Scanner(new File(filenamespam));
             FileInputStream fisspam = new FileInputStream(new File(filenamespam));
             byte[] b = new byte[fisspam.available()];
             fisspam.read(b);
