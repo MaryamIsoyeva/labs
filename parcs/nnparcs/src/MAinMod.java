@@ -14,18 +14,25 @@ public class MAinMod {
         task curtask = new task();
         curtask.addJarFile("NN.jar");
 //        Node n = fromFile(curtask.findFile("input"));
-        byte[] n = fromFile(curtask.findFile("input"));
-        String x = new String(n);
-        DataToTransf d = new DataToTransf(x);
+        DataToTransf n = fromFile();
+        
+//        byte[] n = fromFile(curtask.findFile("input"));
+//        String x = new String(n);
+//        DataToTransf d = new DataToTransf(x);
         AMInfo info = new AMInfo(curtask, null);
         point p = info.createPoint();
         channel c = p.createChannel();
         p.execute("NN");
-        c.write(d);
+        c.write(т);
 
         System.out.println("Waiting for result...");
-        DataToTransf mapped = (DataToTransf)c.readObject();
-        System.out.println("Result: " + mapped.size());
+//        DataToTransf mapped = (DataToTransf)c.readObject();
+        if(c.readInt() ==1){
+        System.out.println("Result: the given message is spam"/*mapped.size()*/);
+        }
+        else{
+            System.out.println("Result: the given message is ham");
+        }
         curtask.end();
 
 //        task curtask = new task();
@@ -118,15 +125,46 @@ public class MAinMod {
 //        curtask.end();
     }
 
-    public static byte[] fromFile(String filename) throws Exception {
-        Path path = Paths.get(filename);
+
+
+    public static DataToTransf fromFile() throws Exception {
         try {
-            byte[] data = Files.readAllBytes(path);
-            return data;
-        } catch (IOException e) {
+            String filenamespam = curtask.findFile("inputspam");
+            String filenameham = curtask.findFile("inputham");
+//            String path = filename;
+            FileInputStream fisspam = new FileInputStream(new File(filenamespam));
+            byte[] b = new byte[fisspam.available()];
+            fisspam.read(b);
+            fisspam.close();
+            fisspam = null;
+            String m = new String(b);
+            
+            FileInputStream hamfs = new FileInputStream(new File(filenameham));
+            byte[] h = new byte[hamfs.available()];
+            hamfs.read(h);
+            hamfs.close();
+            hamfs = null;
+            String n = new String(h);
+            
+            DataToTransf dataToTrans = new DataToTransf(m, n, false);
+
+            return dataToTrans;
+        } catch (Exception e) {
             e.printStackTrace();
-            return new byte[0];
+            return null;
         }
+    }
+        /*
+         public static byte[] fromFile(String filename) throws Exception {
+         Path path = Paths.get(filename);
+         try {
+         byte[] data = Files.readAllBytes(path);
+         return data;
+         } catch (IOException e) {
+         e.printStackTrace();
+         return new byte[0];
+         }}
+         */
 //        Scanner sc = new Scanner(new File(filename));
 //        int m = sc.nextInt();
 //        int s = sc.nextInt();
@@ -142,5 +180,5 @@ public class MAinMod {
 //            }
 //        }
 //        return nodes.get(s - 1);
-    }
+    
 }

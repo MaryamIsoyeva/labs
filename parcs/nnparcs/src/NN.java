@@ -9,205 +9,53 @@ import parcs.*;
 public class NN implements AM {
     public void run(AMInfo info) {
         DataToTransf dataToTransf = (DataToTransf)info.parent.readObject();
-//
-        if(dataToTransf.exec == false){
-            int numOfPoints = 3;
-            String x = dataToTransf.s;
-            int len = x.length() / numOfPoints;
-            List<channel> chans = new ArrayList<>();
-            HashMap<List<String>, Integer> ml = new HashMap<List<String>, Integer>();
-            int pos = 0;
-            int nextPos = 0;
-            for(int i = 0; i < numOfPoints; ++i) {
-                point p = info.createPoint();
-                channel c = p.createChannel();
-                nextPos = (i + 1) * len; //x.substring(pos, (i+1)*len).indexOf(" ", pos + len);
-                p.execute("NN");
-                if (/*nextPos == -1*/ i == numOfPoints - 1) {
-                    c.write(x.substring(pos));
-                    System.out.println(nextPos);
-//                pos = (i+1)*len;
-                } else {
-                    System.out.println(nextPos);
-                    c.write(x.substring(pos, nextPos));
-                    pos = nextPos + 1;
-                }
-                chans.add(c);
-            }
-            for(channel chan: chans){
-//            int length = chan.readInt();
-//            System.out.println("length");
-//            System.out.println(length);
-//            byte[] m = new byte[length];
-//            chan.read(m);
-                /*try {
-                    Thread.sleep(30000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                    return;
-                }*/
-                DataToTransf dat = (DataToTransf)chan.readObject();
-
-//                HashMap<List<String>, Integer> d = (HashMap)DataToTransf.toObject(m); //DataToTransf.toObject(m);
-                dat.grammap.forEach((l, v) -> ml.merge(l, v, Integer::sum));
-
-//            DataToTransf d = (DataToTransf)chan.readObject();
-
-            }
-
-
-
-            /*System.out.println(dataToTransf.s.substring(5, 7));
-            String[] words = dataToTransf.s.split("\\W+");
-            HashMap<List<String>, Integer> ml = new HashMap<List<String>, Integer>();
-            int n = 3;
-            int count = 0;
-            for(int i = 0; i <= words.length - n; ++i){
-                List<String> l = new ArrayList<String>(Arrays.asList(Arrays.copyOfRange(words, i, i+n)));
-                count = ml.getOrDefault(l, 0);
-                ml.put(l, count + 1);
-            }
-            DataToTransf mapped = new DataToTransf(ml);
-            info.parent.write(mapped);*/
-
-            DataToTransf datToWrite = new DataToTransf(ml);
-//            info.parent.write(datToWrite.grammap.size());
-            info.parent.write(datToWrite);
-//            String x = dataToTransf.s;
-//            int numOfPoints = 3;
-//            int len = x.length() / numOfPoints;
-//            List<channel> chans = new ArrayList<>();
-//            HashMap<List<String>, Integer> ml = new HashMap<List<String>, Integer>();
-//        int pos = 0;
-//        int nextPos = 0;
-//        for(int i = 0; i < numOfPoints; ++i){
-//            point p = info.createPoint();
-//            channel c = p.createChannel();
-//            nextPos = (i+1)*len; //x.substring(pos, (i+1)*len).indexOf(" ", pos + len);
-//            p.execute("NN");
-//
-//            if(/*nextPos == -1*/ i == numOfPoints -1){
-//                c.write(x.substring(pos));
-//                System.out.println(nextPos);
-////                pos = (i+1)*len;
-//            }
-//            else {
-//                System.out.println(nextPos);
-//                c.write(x.substring(pos, nextPos));
-//                pos = nextPos + 1;
-//            }
-//            chans.add(c);
+        List<point> points = new ArrayList<>();
+        List<channel> chans = new ArrayList<>();
+        if(dataToTransf.trainable){
+            dataToTransf.train(dataToTransf.hamstring, true);
+            dataToTransf.train(dataToTransf.spamstring, false);
+            float f = (double)dataToTransf.classify(dataToTransf.predict);
+            info.parent.write(f);
         }
         else{
-            String[] words = dataToTransf.s.split("\\W+");
-            HashMap<List<String>, Integer> ml = new HashMap<List<String>, Integer>();
-            HashMap<String, HashMap<String, Integer>> bigram = new HashMap<String, HashMap<String, Integer>>();
-            int n = 3;
-            int count = 0;
-            for(int i = 0; i <= words.length - n; ++i){
-                List<String> l = new ArrayList<String>(Arrays.asList(Arrays.copyOfRange(words, i, i+n)));
-                count = ml.getOrDefault(l, 0);
-                ml.put(l, count + 1);
+            
+            int numOfSplit = 3;
+            int spamlen = dataToTransf.spamstring.length() / numOfSplit;
+            int hamlen =dataToTransf.hamstring.length()/ numOfSplit;
+            int startspam = 0;
+            int startham = 0;
+            int indexofspaceinspam = 0;
+            int indexofspaceinham = 0;
+            for(int i = 0; i < numOfSplit; ++i){
+                indexofspaceinspam = dataToTransf.spamstring.substring((i+1)*spamlen).indexOf(' ');
+                indexofspaceinham = dataToTransf.hamstring.substring((i+1)*hamlen).indexOf(' ');
+                DataToTransf z = new DataToTransf(dataToTransf.spamstring.substring(startspam, (i+1)*spamlen + indexofspaceinspam), dataToTransf.hamstring.substring(startham, (i+1)*hamlen + indexofspaceinham),true);
+                startspam = (i+1)*spamlen + indexofspaceinspam;
+                startham = (i+1)*hamlen + indexofspaceinham;
+                point p = info.createPoint();
+                channel c = p.createChannel();
+                p.execute("NN");
+                c.write(z);
+                points.add(p);
+                chans.add(c);
+            }
+            int numOfOnes = 0; //spam
+            int numOfZeros = 0;
+            for (channel c: chans) {
+                if(c.readDouble() > 0.51){
+                    numOfOnes +=1;
+                }
+                else{
+                    numOfZeroes +=1
+                }
+            }
+            if(numOfOnes > numOfZeros){
+                info.parent.write(1);
+            }
+            else{
+                info.parent.write(0);
             }
             
-            DataToTransf d = new DataToTransf(ml);
-//            byte[] b= DataToTransf.toByteArray(ml);
-//            info.parent.write(b.length);
-            info.parent.write(d);
-
         }
-//            for(channel chan: chans){
-////            int length = chan.readInt();
-////            System.out.println("length");
-////            System.out.println(length);
-////            byte[] m = new byte[length];
-////            chan.read(m);
-//                try {
-//                    Thread.sleep(30000);
-//                } catch (InterruptedException e) {
-//                    e.printStackTrace();
-//                    return;
-//                }
-//                DataToTransf dat = (DataToTransf)chan.readObject();
-//
-////                HashMap<List<String>, Integer> d = (HashMap)DataToTransf.toObject(m); //DataToTransf.toObject(m);
-//                dat.grammap.forEach((l, v) -> ml.merge(l, v, Integer::sum));
-//
-////            DataToTransf d = (DataToTransf)chan.readObject();
-//
-//
-//            }
-//            DataToTransf objDat = new DataToTransf(ml);
-//            info.parent.write(objDat);
-//        }
-//        else{
-//            String[] words = dataToTransf.s.split("\\W+");
-//            HashMap<List<String>, Integer> ml = new HashMap<List<String>, Integer>();
-//            int n = 3;
-//            int count = 0;
-//            for(int i = 0; i <= words.length - n; ++i){
-//                List<String> l = new ArrayList<String>(Arrays.asList(Arrays.copyOfRange(words, i, i+n)));
-//                count = ml.getOrDefault(l, 0);
-//                ml.put(l, count + 1);
-//            }
-//
-//            DataToTransf d = new DataToTransf(ml);
-////            byte[] b= DataToTransf.toByteArray(ml);
-////            info.parent.write(b.length);
-//            info.parent.write(d);
-//
-//        }
-//
-//
-////        String x = (String)info.parent.readObject();
-//
-//
-////        byte n [] = info.parent.read
-////        String[] words = s.split("\\W+");
-////        HashMap<List<String>, Integer> ml = new HashMap<List<String>, Integer>();
-////        int n = 3;
-////        int count = 0;
-////        for(int i = 0; i <= words.length - n; ++i){
-////            List<String> l = new ArrayList<String>(Arrays.asList(Arrays.copyOfRange(words, i, i+n)));
-////            count = ml.getOrDefault(l, 0);
-////            ml.put(l, count + 1);
-////        }
-////
-////            DataToTransf d = new DataToTransf(ml);
-//////            byte[] b= DataToTransf.toByteArray(ml);
-//////            info.parent.write(b.length);
-////            info.parent.write(d);
-////            System.out.println(ByteUtil.toObject(b));
-//
-//
-////        DataToTransf d = new DataToTransf(ml);
-////        info.parent.write(d);
-//
-//
-//
-////        System.out.println("[" + n.getId() + "] Build started.");
-////
-////        List<point> points = new ArrayList<>();
-////        List<channel> chans = new ArrayList<>();
-////        for (Node d: n.getDeps()) {
-////            point p = info.createPoint();
-////            channel c = p.createChannel();
-////            p.execute("DFS");
-////            c.write(d);
-////            points.add(p);
-////            chans.add(c);
-////        }
-////        long sum = n.getTime();
-////        for (channel c: chans) {
-////            sum += c.readLong();
-////        }
-////        try {
-////            Thread.sleep(n.getTime());
-////        } catch (InterruptedException e) {
-////            e.printStackTrace();
-////            return;
-////        }
-////        System.out.println("[" + n.getId() + "] Build finished.");
-////        info.parent.write(sum);
     }
 }
