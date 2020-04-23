@@ -14,7 +14,7 @@ public class NN implements AM {
         if(dataToTransf.trainable){
             dataToTransf.train(dataToTransf.hamstring, true);
             dataToTransf.train(dataToTransf.spamstring, false);
-            float f = (double)dataToTransf.classify(dataToTransf.predict);
+            double f = (double)dataToTransf.classify(dataToTransf.predict);
             info.parent.write(f);
         }
         else{
@@ -46,7 +46,7 @@ public class NN implements AM {
                     numOfOnes +=1;
                 }
                 else{
-                    numOfZeroes +=1;
+                    numOfZeros +=1;
                 }
             }
             if(numOfOnes > numOfZeros){

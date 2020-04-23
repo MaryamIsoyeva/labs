@@ -45,6 +45,11 @@ public class DataToTransf implements Serializable {
         this.predict = pre;
         this.predictedProbability=f;
     }
+    DataToTransf(String m, String n, boolean trainbool){
+        this.spamstring=m;
+        this.hamstring = n;
+        this.trainable=trainbool;
+    }
         static void print(String s) {
             System.out.println(s);
         }
