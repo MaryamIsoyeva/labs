@@ -14,7 +14,8 @@ public class MAinMod {
         task curtask = new task();
         curtask.addJarFile("NN.jar");
 //        Node n = fromFile(curtask.findFile("input"));
-        DataToTransf n = fromFile(curtask, "Welcome to UK-mobile-date this msg is FREE giving you free calling");
+    
+        DataToTransf n = fromFile(curtask.findFile("inputspam"),curtask.findFile("inputham"), "Welcome to UK-mobile-date this msg is FREE giving you free calling");
         
 //        byte[] n = fromFile(curtask.findFile("input"));
 //        String x = new String(n);
@@ -127,10 +128,9 @@ public class MAinMod {
 
 
 
-    public static DataToTransf fromFile(task curtask, String predictionString) throws Exception {
+    public static DataToTransf fromFile(String filenamespam, String filenameham, String predictionString) throws Exception {
         try {
-            String filenamespam = curtask.findFile("inputspam");
-            String filenameham = curtask.findFile("inputham");
+            
 //            String path = filename;
             FileInputStream fisspam = new FileInputStream(new File(filenamespam));
             byte[] b = new byte[fisspam.available()];
