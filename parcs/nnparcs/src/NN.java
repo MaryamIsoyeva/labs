@@ -46,7 +46,7 @@ public class NN implements AM {
                     numOfOnes +=1;
                 }
                 else{
-                    numOfZeroes +=1
+                    numOfZeroes +=1;
                 }
             }
             if(numOfOnes > numOfZeros){
