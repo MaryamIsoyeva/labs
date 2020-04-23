@@ -14,7 +14,7 @@ public class MAinMod {
         task curtask = new task();
         curtask.addJarFile("NN.jar");
 //        Node n = fromFile(curtask.findFile("input"));
-    
+        System.out.println(curtask.findFile("inputspam"));
         DataToTransf n = fromFile(curtask.findFile("inputspam"),curtask.findFile("inputham"), "Welcome to UK-mobile-date this msg is FREE giving you free calling");
         
 //        byte[] n = fromFile(curtask.findFile("input"));
