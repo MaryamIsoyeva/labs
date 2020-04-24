@@ -36,7 +36,7 @@ public class NN implements AM {
             int indexofspaceinspam = 0;
             int indexofspaceinham = 0;
             BufferedWriter writer = new BufferedWriter(new FileWriter("predict", true));
-            writer.append(sw.toString());
+            writer.append(dataToTransf.predict);
             
             writer.close();
             
