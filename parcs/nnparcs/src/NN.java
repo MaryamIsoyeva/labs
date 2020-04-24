@@ -13,6 +13,7 @@ public class NN implements AM {
         DataToTransf dataToTransf = (DataToTransf)info.parent.readObject();
         List<point> points = new ArrayList<>();
         List<channel> chans = new ArrayList<>();
+            info.parent.write(0);
         if(dataToTransf.trainable){
             
             
