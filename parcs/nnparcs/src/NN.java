@@ -15,6 +15,12 @@ public class NN implements AM {
         List<channel> chans = new ArrayList<>();
         if(dataToTransf.trainable){
             
+            
+            
+            
+            
+            
+            
                 BufferedWriter writerbuf = new BufferedWriter(new FileWriter("stacktrace", true));
                 writerbuf.append("Predict");
                 writerbuf.append(dataToTransf.predict);
