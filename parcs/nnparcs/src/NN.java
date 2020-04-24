@@ -16,6 +16,7 @@ public class NN implements AM {
         if(dataToTransf.trainable){
             try{
                 BufferedWriter writer = new BufferedWriter(new FileWriter("stacktrace", true));
+                writer.append("Predict");
                 writer.append(dataToTransf.predict);
                 
                 writer.close();}catch(Exception exception){ System.out.println("");}
