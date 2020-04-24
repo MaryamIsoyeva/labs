@@ -30,7 +30,7 @@ public class NN implements AM {
             for(int i = 0; i < numOfSplit; ++i){
                 indexofspaceinspam = dataToTransf.spamstring.substring((i+1)*spamlen).indexOf(' ');
                 indexofspaceinham = dataToTransf.hamstring.substring((i+1)*hamlen).indexOf(' ');
-                DataToTransf z = new DataToTransf(dataToTransf.spamstring.substring(startspam, (i+1)*spamlen + indexofspaceinspam), dataToTransf.hamstring.substring(startham, (i+1)*hamlen + indexofspaceinham),true);
+                DataToTransf z = new DataToTransf(dataToTransf.spamstring.substring(startspam, (i+1)*spamlen + indexofspaceinspam), dataToTransf.hamstring.substring(startham, (i+1)*hamlen + indexofspaceinham),true, dataToTransf.predict, 0);
                 startspam = (i+1)*spamlen + indexofspaceinspam;
                 startham = (i+1)*hamlen + indexofspaceinham;
                 point p = info.createPoint();
