@@ -17,6 +17,7 @@ public class MAinMod {
         System.out.println(curtask.findFile("inputspam"));
         DataToTransf n = fromFile(curtask.findFile("inputspam"),curtask.findFile("inputham"), "Welcome to UK-mobile-date this msg is FREE giving you free calling");
         System.out.println(n.predict);
+        System.out.println(n.spamstring);
         
 //        byte[] n = fromFile(curtask.findFile("input"));
 //        String x = new String(n);
@@ -37,7 +38,7 @@ public class MAinMod {
         }
         curtask.end();
 
-//        task curtask = new task();
+/*//        task curtask = new task();
 //        curtask.addJarFile("NN.jar");
 //        AMInfo info = new AMInfo(curtask, null);
 //        byte[] n = fromFile(curtask.findFile("input"));
@@ -58,7 +59,7 @@ public class MAinMod {
 ////            channel c = p.createChannel();
 ////            nextPos = (i+1)*len; //x.substring(pos, (i+1)*len).indexOf(" ", pos + len);
 ////            p.execute("NN");
-////            if(/*nextPos == -1*/ i == numOfPoints -1){
+////            if( i == numOfPoints -1){ //nextPos == -1
 ////                c.write(x.substring(pos));
 ////                System.out.println(nextPos);
 //////                pos = (i+1)*len;
@@ -124,7 +125,7 @@ public class MAinMod {
 //            out.close();
 //        } catch (IOException e) {e.printStackTrace(); return;}
 ////        System.out.println("Result: " + ml.keySet().toArray()[0]);
-//        curtask.end();
+//        curtask.end();*/
     }
 
 
