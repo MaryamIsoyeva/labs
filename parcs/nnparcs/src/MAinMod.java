@@ -17,7 +17,7 @@ public class MAinMod {
         System.out.println(curtask.findFile("inputspam"));
         DataToTransf n = fromFile(curtask.findFile("inputspam"),curtask.findFile("inputham"), "Welcome to UK-mobile-date this msg is FREE giving you free calling");
         System.out.println(n.predict);
-        System.out.println(n.spamstring);
+//        System.out.println(n.spamstring);
         
 //        byte[] n = fromFile(curtask.findFile("input"));
 //        String x = new String(n);
