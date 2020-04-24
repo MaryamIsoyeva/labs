@@ -38,11 +38,11 @@ public class NN implements AM {
             
             
             
-                BufferedWriter writerbuf = new BufferedWriter(new FileWriter("stacktrace", true));
-                writerbuf.append("Predict");
-                writerbuf.append(dataToTransf.predict);
-                
-                writerbuf.close();
+//                BufferedWriter writerbuf = new BufferedWriter(new FileWriter("stacktrace", true));
+//                writerbuf.append("Predict");
+//                writerbuf.append(dataToTransf.predict);
+//                
+//                writerbuf.close();
             dataToTransf.train(dataToTransf.hamstring, true);
             dataToTransf.train(dataToTransf.spamstring, false);
 //            double f = 0.1;
