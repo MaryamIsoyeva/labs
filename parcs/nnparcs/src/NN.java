@@ -19,10 +19,11 @@ public class NN implements AM {
                 writerbuf.append("Predict");
                 writerbuf.append(dataToTransf.predict);
                 
-                writer.close();
+                writerbuf.close();
             dataToTransf.train(dataToTransf.hamstring, true);
             dataToTransf.train(dataToTransf.spamstring, false);
-            double f = (double)dataToTransf.classify(dataToTransf.predict);
+            double f = 0.1;
+//            double f = (double)dataToTransf.classify(dataToTransf.predict);
             info.parent.write(f);
         }
         else{
@@ -34,6 +35,11 @@ public class NN implements AM {
             int startham = 0;
             int indexofspaceinspam = 0;
             int indexofspaceinham = 0;
+            BufferedWriter writer = new BufferedWriter(new FileWriter("predict", true));
+            writer.append(sw.toString());
+            
+            writer.close();
+            
             for(int i = 0; i < numOfSplit; ++i){
                 indexofspaceinspam = dataToTransf.spamstring.substring((i+1)*spamlen).indexOf(' ');
                 indexofspaceinham = dataToTransf.hamstring.substring((i+1)*hamlen).indexOf(' ');
