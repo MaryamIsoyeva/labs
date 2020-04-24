@@ -22,7 +22,7 @@ public class NN implements AM {
                 PrintWriter pw = new PrintWriter(sw);
                 
                 
-                BufferedWriter writerf = new BufferedWriter(new FileWriter("initial", true));
+                BufferedWriter writerf = new BufferedWriter(new FileWriter("train", true));
                 String trainable =dataToTransf.trainable?"trainable":"module";
                 writerf.append(trainable);
             }catch(Exception exc){ System.out.println("");}
