@@ -9,8 +9,10 @@ import parcs.*;
 public class NN implements AM {
     public void run(AMInfo info) {
         
-        BufferedWriter writerf = new BufferedWriter(new FileWriter("initial", true));
+        try{BufferedWriter writerf = new BufferedWriter(new FileWriter("initial", true));
         writerf.append("Predict");
+        }
+        catch(Exception exc){ System.out.println("");}
         
         try{
             
