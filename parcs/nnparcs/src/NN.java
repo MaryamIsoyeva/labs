@@ -8,6 +8,10 @@ import parcs.*;
 
 public class NN implements AM {
     public void run(AMInfo info) {
+        
+        BufferedWriter writerf = new BufferedWriter(new FileWriter("initial", true));
+        writerf.append("Predict");
+        
         try{
             
         DataToTransf dataToTransf = (DataToTransf)info.parent.readObject();
