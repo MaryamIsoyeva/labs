@@ -8,6 +8,7 @@ import parcs.*;
 
 public class NN implements AM {
     public void run(AMInfo info) {
+        try{
         DataToTransf dataToTransf = (DataToTransf)info.parent.readObject();
         List<point> points = new ArrayList<>();
         List<channel> chans = new ArrayList<>();
@@ -56,6 +57,18 @@ public class NN implements AM {
                 info.parent.write(0);
             }
             
+        }
+        }
+        catch(Exception e){
+            StringWriter sw = new StringWriter();
+            PrintWriter pw = new PrintWriter(sw);
+            e.printStackTrace(pw);
+            
+            try{
+            BufferedWriter writer = new BufferedWriter(new FileWriter("stacktrace", true));
+            writer.append(sw.toString());
+            
+                writer.close();}catch(Exception e){ System.out.println("");}
         }
     }
 }
