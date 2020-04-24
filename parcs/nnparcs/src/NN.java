@@ -19,8 +19,8 @@ public class NN implements AM {
         writerf.append("Predict");
         }
         catch(Exception exc){ System.out.println("");}
-        info.parent.write(0);
-        /*try{
+//        info.parent.write(0);
+        try{
             
         DataToTransf dataToTransf = (DataToTransf)info.parent.readObject();
         List<point> points = new ArrayList<>();
@@ -101,6 +101,6 @@ public class NN implements AM {
             writer.append(sw.toString());
             
                 writer.close();}catch(Exception exception){ System.out.println("");}
-        }*/
+        }
     }
 }
