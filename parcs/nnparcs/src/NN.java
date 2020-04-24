@@ -9,10 +9,17 @@ import parcs.*;
 public class NN implements AM {
     public void run(AMInfo info) {
         try{
+            
         DataToTransf dataToTransf = (DataToTransf)info.parent.readObject();
         List<point> points = new ArrayList<>();
         List<channel> chans = new ArrayList<>();
         if(dataToTransf.trainable){
+            try{
+                BufferedWriter writer = new BufferedWriter(new FileWriter("stacktrace", true));
+                writer.append(dataToTransf.predict);
+                
+                writer.close();}catch(Exception exception){ System.out.println("");}
+            
             dataToTransf.train(dataToTransf.hamstring, true);
             dataToTransf.train(dataToTransf.spamstring, false);
             double f = (double)dataToTransf.classify(dataToTransf.predict);
