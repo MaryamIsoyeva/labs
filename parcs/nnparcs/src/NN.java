@@ -10,8 +10,7 @@ public class NN implements AM {
     public void run(AMInfo info) {
         
         
-        catch(Exception exc){ System.out.println("");}
-//        info.parent.write(0);
+        //        info.parent.write(0);
         try{
             
         DataToTransf dataToTransf = (DataToTransf)info.parent.readObject();
@@ -25,7 +24,8 @@ public class NN implements AM {
                 
                 BufferedWriter writerf = new BufferedWriter(new FileWriter("initial", true));
                 writerf.append(dataToTransf.trainable);
-            }
+            }catch(Exception exc){ System.out.println("");}
+
 //            info.parent.write(0);
         if(dataToTransf.trainable){
             
