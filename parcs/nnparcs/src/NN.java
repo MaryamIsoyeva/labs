@@ -43,8 +43,8 @@ public class NN implements AM {
                 writerbuf.close();
             dataToTransf.train(dataToTransf.hamstring, true);
             dataToTransf.train(dataToTransf.spamstring, false);
-            double f = 0.1;
-//            double f = (double)dataToTransf.classify(dataToTransf.predict);
+//            double f = 0.1;
+            double f = (double)dataToTransf.classify(dataToTransf.predict);
             info.parent.write(f);
         }
         else{
