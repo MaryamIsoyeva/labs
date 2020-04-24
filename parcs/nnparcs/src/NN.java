@@ -9,15 +9,7 @@ import parcs.*;
 public class NN implements AM {
     public void run(AMInfo info) {
         
-        try{
-            
-            StringWriter sw = new StringWriter();
-            PrintWriter pw = new PrintWriter(sw);
-            
-            
-            BufferedWriter writerf = new BufferedWriter(new FileWriter("initial", true));
-        writerf.append("Predict");
-        }
+        
         catch(Exception exc){ System.out.println("");}
 //        info.parent.write(0);
         try{
@@ -25,6 +17,15 @@ public class NN implements AM {
         DataToTransf dataToTransf = (DataToTransf)info.parent.readObject();
         List<point> points = new ArrayList<>();
         List<channel> chans = new ArrayList<>();
+            try{
+                
+                StringWriter sw = new StringWriter();
+                PrintWriter pw = new PrintWriter(sw);
+                
+                
+                BufferedWriter writerf = new BufferedWriter(new FileWriter("initial", true));
+                writerf.append(dataToTransf.trainable);
+            }
 //            info.parent.write(0);
         if(dataToTransf.trainable){
             
