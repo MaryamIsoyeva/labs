@@ -25,6 +25,8 @@ public class NN implements AM {
                 BufferedWriter writerf = new BufferedWriter(new FileWriter("train", true));
                 String trainable =dataToTransf.trainable?"trainable":"module";
                 writerf.append(trainable);
+                writerf.append("train");
+                writerf.close();
             }catch(Exception exc){ System.out.println("");}
 
 //            info.parent.write(0);
