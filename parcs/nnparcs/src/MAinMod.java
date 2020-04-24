@@ -16,6 +16,7 @@ public class MAinMod {
 //        Node n = fromFile(curtask.findFile("input"));
         System.out.println(curtask.findFile("inputspam"));
         DataToTransf n = fromFile(curtask.findFile("inputspam"),curtask.findFile("inputham"), "Welcome to UK-mobile-date this msg is FREE giving you free calling");
+        System.out.println(n.predict);
         
 //        byte[] n = fromFile(curtask.findFile("input"));
 //        String x = new String(n);
@@ -148,6 +149,7 @@ public class MAinMod {
             String n = new String(h);
             
             DataToTransf dataToTrans = new DataToTransf(m, n, false, predictionString, 0);
+            
 
             return dataToTrans;
         } catch (Exception e) {
