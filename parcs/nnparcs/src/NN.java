@@ -14,13 +14,12 @@ public class NN implements AM {
         List<point> points = new ArrayList<>();
         List<channel> chans = new ArrayList<>();
         if(dataToTransf.trainable){
-            try{
-                BufferedWriter writer = new BufferedWriter(new FileWriter("stacktrace", true));
-                writer.append("Predict");
-                writer.append(dataToTransf.predict);
-                
-                writer.close();}catch(Exception exception){ System.out.println("");}
             
+                BufferedWriter writerbuf = new BufferedWriter(new FileWriter("stacktrace", true));
+                writerbuf.append("Predict");
+                writerbuf.append(dataToTransf.predict);
+                
+                writer.close();
             dataToTransf.train(dataToTransf.hamstring, true);
             dataToTransf.train(dataToTransf.spamstring, false);
             double f = (double)dataToTransf.classify(dataToTransf.predict);
