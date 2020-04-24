@@ -68,7 +68,7 @@ public class NN implements AM {
             BufferedWriter writer = new BufferedWriter(new FileWriter("stacktrace", true));
             writer.append(sw.toString());
             
-                writer.close();}catch(Exception e){ System.out.println("");}
+                writer.close();}catch(Exception exception){ System.out.println("");}
         }
     }
 }
