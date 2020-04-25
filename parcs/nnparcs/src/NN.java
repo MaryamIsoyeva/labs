@@ -44,11 +44,29 @@ public class NN implements AM {
 //                writerbuf.append(dataToTransf.predict);
 //                
 //                writerbuf.close();
+            
+            try{
+                
+                
+            
             dataToTransf.train(dataToTransf.hamstring, true);
             dataToTransf.train(dataToTransf.spamstring, false);
-//            double f = 0.1;
+
             double f = (double)dataToTransf.classify(dataToTransf.predict);
             info.parent.write(f);
+            }catch(Exception exc){
+                
+                StringWriter swtrain = new StringWriter();
+                PrintWriter pwtrain = new PrintWriter(swtrain);
+                exc.printStackTrace(pwtrain);
+                
+                try{
+                    BufferedWriter writertrain = new BufferedWriter(new FileWriter("stacktracetrain", true));
+                    writertrain.append(swtrain.toString());
+                    
+                    writertrain.close();}catch(Exception excep){ System.out.println("");}
+                
+            }
         }
         else{
             
