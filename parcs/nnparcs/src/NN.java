@@ -42,6 +42,12 @@ public class NN implements AM {
 //
                 try{
                     double fn = (double)dataToTransf.classify(dataToTransf.predict);
+                    BufferedWriter writerbuftrain = new BufferedWriter(new FileWriter("predictionintrain", true));
+                    writerbuftrain.append("Predict");
+                    String floatvalue = String.valueOf(fn);
+                    writerbuftrain.append(floatvalue);
+                    writerbuftrain.close();
+
                 }
                 catch(Exception exceptiontrain){
                    
@@ -62,11 +68,6 @@ public class NN implements AM {
                 
                 
                 info.parent.write(f);
-                BufferedWriter writerbuftrain = new BufferedWriter(new FileWriter("predictionintrain", true));
-                writerbuftrain.append("Predict");
-                String floatvalue = String.valueOf(fn);
-                writerbuftrain.append(floatvalue);
-                writerbuftrain.close();
                 
 
                 
