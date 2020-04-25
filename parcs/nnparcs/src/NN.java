@@ -52,7 +52,7 @@ public class NN implements AM {
         }
         else{
             
-            int numOfSplit = 3;
+            int numOfSplit = 2;
             int spamlen = dataToTransf.spamstring.length() / numOfSplit;
             int hamlen =dataToTransf.hamstring.length()/ numOfSplit;
             int startspam = 0;
