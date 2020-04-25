@@ -190,13 +190,13 @@ public class DataToTransf implements Serializable {
             }
             
             
-            Collections.sort(problist, new Comparator<Float>() {
-                @Override
-                public int compare(Float f1, Float f2) {
-                    return (int) (100 * interesting(f2) - 100 * interesting(f1)); //descending
-                }
-            });
-            
+//            Collections.sort(problist, new Comparator<Float>() {
+//                @Override
+//                public int compare(Float f1, Float f2) {
+//                    return (int) (100 * interesting(f2) - 100 * interesting(f1)); //descending
+//                }
+//            });
+//            
             int probablisize = problist.size();
             Float[] probabilities = problist.toArray(new Float[probablisize]);
             
