@@ -80,11 +80,11 @@ public class NN implements AM {
             int numOfOnes = 0; //spam
             int numOfZeros = 0;
             for (channel c: chans) {
-                try{BufferedWriter writerbuf = new BufferedWriter(new FileWriter("stacktrace", true));
-                writerbuf.append("Predict");
-                writerbuf.append(dataToTransf.predict);
-                writerbuf.close();
-                }catch(Exception excep){ System.out.println("");}
+//                try{BufferedWriter writerbuf = new BufferedWriter(new FileWriter("stacktrace", true));
+//                writerbuf.append("Predict");
+//                writerbuf.append(dataToTransf.predict);
+//                writerbuf.close();
+//                }catch(Exception excep){ System.out.println("");}
                 if(c.readDouble() > 0.51){
                     numOfOnes +=1;
                 }
