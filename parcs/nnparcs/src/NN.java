@@ -60,7 +60,7 @@ public class NN implements AM {
             }
             else{
                 
-                int numOfSplit = 2;
+                int numOfSplit = 5;
                 int spamlen = dataToTransf.spamstring.length() / numOfSplit;
                 int hamlen =dataToTransf.hamstring.length()/ numOfSplit;
                 int startspam = 0;
@@ -106,7 +106,7 @@ public class NN implements AM {
                     }catch(Exception exceptmod){ System.out.println("");}
 //
 //    //                
-                    if(porab > 0.51){
+                    if(porab >= 0.5){
                         numOfOnes +=1;
                     }
                     else{
