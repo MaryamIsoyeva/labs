@@ -92,7 +92,7 @@ public class NN implements AM {
                 }catch(Exception excep){ System.out.println("");}
                 int numOfOnes = 0; //spam
                 int numOfZeros = 0;
-    //            Thread.sleep(100);
+//                Thread.sleep();
                 for (channel c: chans) {
                     double porab =c.readDouble();
                    try{BufferedWriter writerbuf = new BufferedWriter(new FileWriter("prediction", true));
