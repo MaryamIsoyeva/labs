@@ -95,21 +95,24 @@ public class NN implements AM {
                 points.add(p);
                 chans.add(c);
             }
-            int numOfOnes = 0; //spam
+            int numOfOnes = 1; //spam
             int numOfZeros = 0;
-            for (channel c: chans) {
+            Thread.sleep(100);
+//            for (channel c: chans) {
 //                try{BufferedWriter writerbuf = new BufferedWriter(new FileWriter("stacktrace", true));
 //                writerbuf.append("Predict");
 //                writerbuf.append(dataToTransf.predict);
 //                writerbuf.close();
 //                }catch(Exception excep){ System.out.println("");}
-                if(c.readDouble() > 0.51){
-                    numOfOnes +=1;
-                }
-                else{
-                    numOfZeros +=1;
-                }
-            }
+                
+//                
+//                if(c.readDouble() > 0.51){
+//                    numOfOnes +=1;
+//                }
+//                else{
+//                    numOfZeros +=1;
+//                }
+//            }
             int predictedLabel =1;
             if(numOfOnes > numOfZeros){
                 info.parent.write(predictedLabel);

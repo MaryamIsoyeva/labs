@@ -31,7 +31,8 @@ public class MAinMod {
 
         System.out.println("Waiting for result...");
 //        DataToTransf mapped = (DataToTransf)c.readObject();
-        if(c.readInt() ==1){
+        int spamham =c.readInt();
+        if(spamham ==1){
         System.out.println("Result: the given message is spam"/*mapped.size()*/);
         }
         else{
