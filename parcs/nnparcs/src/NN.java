@@ -80,34 +80,34 @@ public class NN implements AM {
                     points.add(p);
                     chans.add(c);
                 }
-                try{BufferedWriter writerbufn = new BufferedWriter(new FileWriter("prediction", true));
+                try{BufferedWriter writerbufn = new BufferedWriter(new FileWriter("chans", true));
                     writerbufn.append("Chans");
-                    String porabvalue = String.valueOf(numOfSplit);
+                    String porabvalue = String.valueOf(chans.size());
                     
-                    writerbufn.append(chans.size());
+                    writerbufn.append(porabvalue);
                     writerbufn.close();
                 }catch(Exception excep){ System.out.println("");}
                 int numOfOnes = 0; //spam
                 int numOfZeros = 0;
     //            Thread.sleep(100);
-//                for (channel c: chans) {
-//                    double porab =c.readDouble();
-//                   try{BufferedWriter writerbuf = new BufferedWriter(new FileWriter("prediction", true));
-//                    writerbuf.append("Predict");
-//                        String porabvalue = String.valueOf(porab);
+                for (channel c: chans) {
+                    double porab =c.readDouble();
+                   try{BufferedWriter writerbuf = new BufferedWriter(new FileWriter("prediction", true));
+                    writerbuf.append("Predict");
+                        String porabv = String.valueOf(porab);
+
+                    writerbuf.append(porabv);
+                    writerbuf.close();
+                    }catch(Exception excep){ System.out.println("");}
 //
-//                    writerbuf.append(porabvalue);
-//                    writerbuf.close();
-//                    }catch(Exception excep){ System.out.println("");}
-//                    
 //    //                
-//                    if(porab > 0.51){
-//                        numOfOnes +=1;
-//                    }
-//                    else{
-//                        numOfZeros +=1;
-//                    }
-//                }
+                    if(porab > 0.51){
+                        numOfOnes +=1;
+                    }
+                    else{
+                        numOfZeros +=1;
+                    }
+                }
                 int predictedLabel =1;
                 if(numOfOnes > numOfZeros){
                     info.parent.write(predictedLabel);
