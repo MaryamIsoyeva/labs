@@ -41,34 +41,18 @@ public class NN implements AM {
 //                dataToTransf.train(dataToTransf.hamstring, true);
 //                dataToTransf.train(dataToTransf.spamstring, false);
 //
-                try{
+                
                     double fn = (double)dataToTransf.classify(dataToTransf.predict);
-                    BufferedWriter writerbuftrain = new BufferedWriter(new FileWriter("predictionintrain", true));
-                    writerbuftrain.append("Predict");
-                    String floatvalue = String.valueOf(fn);
-                    writerbuftrain.append(floatvalue);
-                    writerbuftrain.close();
-
-                }
-                catch(Exception exceptiontrain){
-                   
-                    StringWriter swtrain = new StringWriter();
-                    PrintWriter pwtrain = new PrintWriter(swtrain);
-                    exceptiontrain.printStackTrace(pwtrain);
                     
-                    try{
-                        BufferedWriter writerbufclassify = new BufferedWriter(new FileWriter("stacktracetrain", true));
-                        writerbufclassify.append(swtrain.toString());
-                        
-                        writerbufclassify.close();
-                    }catch(Exception extrain){ System.out.println("");}
+
+                
                     
                     //                writerbuf.close();
                 }
-                double f = 0.1;
+//                double f = 0.1;
+            
                 
-                
-                info.parent.write(f);
+                info.parent.write(fn);
                 
 
                 
