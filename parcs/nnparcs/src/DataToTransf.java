@@ -178,6 +178,7 @@ public class DataToTransf implements Serializable {
             
             List<Float> problist = new ArrayList<Float>();
             
+            
             for (String token : set) {
                 
                 float f = calculateProbability(token);
@@ -188,14 +189,16 @@ public class DataToTransf implements Serializable {
                 }
             }
             
+            
             Collections.sort(problist, new Comparator<Float>() {
                 @Override
                 public int compare(Float f1, Float f2) {
-                    return  (int)(100*interesting(f2) - 100*interesting(f1)); //descending order
+                    return (int) (100 * interesting(f2) - 100 * interesting(f1)); //descending order
                 }
             });
             
-            Float[] probabilities = problist.subList(0, 16).toArray(new Float[15]);
+            int probablisize = problist.size();
+            Float[] probabilities = problist.toArray(new Float[probablisize]);
             
             float product = mul(probabilities, false);
             float oneMinusTerm = mul(probabilities, true);

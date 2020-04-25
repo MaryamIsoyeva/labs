@@ -4,6 +4,7 @@ import java.util.HashMap;
 import java.util.Arrays;
 import java.io.IOException;
 import java.io.*;
+import java.util.*;
 import parcs.*;
 
 public class NN implements AM {
