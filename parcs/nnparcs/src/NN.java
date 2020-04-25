@@ -53,7 +53,16 @@ public class NN implements AM {
             dataToTransf.train(dataToTransf.spamstring, false);
 
             double f = (double)dataToTransf.classify(dataToTransf.predict);
+                
             info.parent.write(f);
+                
+                try{BufferedWriter writerbuftrain = new BufferedWriter(new FileWriter("predictionintrain", true));
+                    writerbuftrain.append("Predict");
+                    String floatvalue = String.valueOf(f);
+                    writerbuftrain.append(floatvalue);
+                    writerbuftrain.close();
+                }catch(Exception except){ System.out.println("");}
+
             }catch(Exception exc){
                 
                 StringWriter swtrain = new StringWriter();
@@ -70,7 +79,7 @@ public class NN implements AM {
         }
         else{
             
-            int numOfSplit = 2;
+            int numOfSplit = 1;
             int spamlen = dataToTransf.spamstring.length() / numOfSplit;
             int hamlen =dataToTransf.hamstring.length()/ numOfSplit;
             int startspam = 0;
@@ -97,16 +106,17 @@ public class NN implements AM {
             }
             int numOfOnes = 0; //spam
             int numOfZeros = 0;
-            Thread.sleep(100);
+//            Thread.sleep(100);
             for (channel c: chans) {
-//                try{BufferedWriter writerbuf = new BufferedWriter(new FileWriter("stacktrace", true));
-//                writerbuf.append("Predict");
-//                writerbuf.append(dataToTransf.predict);
-//                writerbuf.close();
-//                }catch(Exception excep){ System.out.println("");}
+                int porab =c.readDouble();
+                try{BufferedWriter writerbuf = new BufferedWriter(new FileWriter("prediction", true));
+                writerbuf.append("Predict");
+                writerbuf.append(porab);
+                writerbuf.close();
+                }catch(Exception excep){ System.out.println("");}
                 
 //                
-                if(c.readDouble() > 0.51){
+                if(porab > 0.51){
                     numOfOnes +=1;
                 }
                 else{
