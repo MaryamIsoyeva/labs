@@ -40,7 +40,7 @@ public class NN implements AM {
 //                dataToTransf.train(dataToTransf.hamstring, true);
 //                dataToTransf.train(dataToTransf.spamstring, false);
 //
-//                double f = (double)dataToTransf.classify(dataToTransf.predict);
+                double fn = (double)dataToTransf.classify(dataToTransf.predict);
                 
                 double f = 0.1;
                 
@@ -48,7 +48,7 @@ public class NN implements AM {
                 info.parent.write(f);
                 BufferedWriter writerbuftrain = new BufferedWriter(new FileWriter("predictionintrain", true));
                 writerbuftrain.append("Predict");
-                String floatvalue = String.valueOf(f);
+                String floatvalue = String.valueOf(fn);
                 writerbuftrain.append(floatvalue);
                 writerbuftrain.close();
                 
