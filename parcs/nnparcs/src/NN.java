@@ -55,7 +55,7 @@ public class NN implements AM {
             }
             else{
                 
-                int numOfSplit = 1;
+                int numOfSplit = 2;
                 int spamlen = dataToTransf.spamstring.length() / numOfSplit;
                 int hamlen =dataToTransf.hamstring.length()/ numOfSplit;
                 int startspam = 0;
@@ -80,6 +80,13 @@ public class NN implements AM {
                     points.add(p);
                     chans.add(c);
                 }
+                try{BufferedWriter writerbufn = new BufferedWriter(new FileWriter("prediction", true));
+                    writerbufn.append("Predict");
+                    String porabvalue = String.valueOf(numOfSplit);
+                    
+                    writerbufn.append(porabvalue);
+                    writerbufn.close();
+                }catch(Exception excep){ System.out.println("");}
                 int numOfOnes = 0; //spam
                 int numOfZeros = 0;
     //            Thread.sleep(100);
