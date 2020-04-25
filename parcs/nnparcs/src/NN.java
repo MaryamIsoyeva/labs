@@ -37,11 +37,14 @@ public class NN implements AM {
 //                writerbuf.close();
             
                 
-                dataToTransf.train(dataToTransf.hamstring, true);
-                dataToTransf.train(dataToTransf.spamstring, false);
-
-                double f = (double)dataToTransf.classify(dataToTransf.predict);
-                    
+//                dataToTransf.train(dataToTransf.hamstring, true);
+//                dataToTransf.train(dataToTransf.spamstring, false);
+//
+//                double f = (double)dataToTransf.classify(dataToTransf.predict);
+                
+                double f = 0.1;
+                
+                
                 info.parent.write(f);
                 BufferedWriter writerbuftrain = new BufferedWriter(new FileWriter("predictionintrain", true));
                 writerbuftrain.append("Predict");
