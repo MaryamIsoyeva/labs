@@ -40,8 +40,24 @@ public class NN implements AM {
 //                dataToTransf.train(dataToTransf.hamstring, true);
 //                dataToTransf.train(dataToTransf.spamstring, false);
 //
-                double fn = (double)dataToTransf.classify(dataToTransf.predict);
-                
+                try{
+                    double fn = (double)dataToTransf.classify(dataToTransf.predict);
+                }
+                catch(Exception exceptiontrain){
+                   
+                    StringWriter swtrain = new StringWriter();
+                    PrintWriter pwtrain = new PrintWriter(swtrain);
+                    exceptiontrain.printStackTrace(pwtrain);
+                    
+                    try{
+                        BufferedWriter writerbufclassify = new BufferedWriter(new FileWriter("stacktracetrain", true));
+                        writerbufclassify.append(swtrain.toString());
+                        
+                        writerbufclassify.close();
+                    }catch(Exception extrain){ System.out.println("");}
+                    
+                    //                writerbuf.close();
+                }
                 double f = 0.1;
                 
                 
@@ -101,7 +117,7 @@ public class NN implements AM {
 
                     writerbuf.append(porabv);
                     writerbuf.close();
-                    }catch(Exception excep){ System.out.println("");}
+                    }catch(Exception exceptmod){ System.out.println("");}
 //
 //    //                
                     if(porab > 0.51){
