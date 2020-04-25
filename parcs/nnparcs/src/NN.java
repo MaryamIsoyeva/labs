@@ -108,10 +108,12 @@ public class NN implements AM {
             int numOfZeros = 0;
 //            Thread.sleep(100);
             for (channel c: chans) {
-                int porab =c.readDouble();
+                double porab =c.readDouble();
                 try{BufferedWriter writerbuf = new BufferedWriter(new FileWriter("prediction", true));
                 writerbuf.append("Predict");
-                writerbuf.append(porab);
+                    String porabvalue = String.valueOf(porab);
+
+                writerbuf.append(porabvalue);
                 writerbuf.close();
                 }catch(Exception excep){ System.out.println("");}
                 
