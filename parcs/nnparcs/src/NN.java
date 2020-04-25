@@ -45,7 +45,7 @@ public class NN implements AM {
                 double f = 0.1;
                 
                 
-                info.parent.write(f);
+                info.parent.write(fn);
                 BufferedWriter writerbuftrain = new BufferedWriter(new FileWriter("predictionintrain", true));
                 writerbuftrain.append("Predict");
                 String floatvalue = String.valueOf(fn);
