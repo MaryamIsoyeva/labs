@@ -35,7 +35,7 @@ public class MAinMod {
         //        DataToTransf mapped = (DataToTransf)c.readObject();
         int spamham =c.readInt();
         long duration = System.nanoTime() - start;
-        System.out.println("Duration of execution " + duration/1000000);
+        System.out.println("Duration of execution " + duration/1000000 + " ms");
         if(spamham ==1){
             System.out.println("Result: the given message is spam"/*mapped.size()*/);
         }
