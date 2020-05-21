@@ -6,7 +6,6 @@ import java.io.IOException;
 import java.io.*;
 import java.util.*;
 import parcs.*;
-//import 
 
 public class NN implements AM {
     public void run(AMInfo info) {
@@ -15,20 +14,7 @@ public class NN implements AM {
             DataToTransf dataToTransf = (DataToTransf)info.parent.readObject();
             List<point> points = new ArrayList<>();
             List<channel> chans = new ArrayList<>();
-           /* try{
-                
-                StringWriter sw = new StringWriter();
-                PrintWriter pw = new PrintWriter(sw);
-                
-                
-                BufferedWriter writerf = new BufferedWriter(new FileWriter("train", true));
-                String trainable =dataToTransf.trainable?"trainable":"module";
-                writerf.append(trainable);
-                writerf.append("train");
-                writerf.close();
-            }catch(Exception exc){ System.out.println("");}*/
 
-//            info.parent.write(0);
             if(dataToTransf.trainable){
             
 //                BufferedWriter writerbuf = new BufferedWriter(new FileWriter("stacktrace", true));
@@ -38,8 +24,8 @@ public class NN implements AM {
 //                writerbuf.close();
             
                 
-//                dataToTransf.train(dataToTransf.hamstring, true);
-//                dataToTransf.train(dataToTransf.spamstring, false);
+                dataToTransf.train(dataToTransf.hamstring, true);
+                dataToTransf.train(dataToTransf.spamstring, false);
 //
                 
                     double fn = (double)dataToTransf.classify(dataToTransf.predict);
