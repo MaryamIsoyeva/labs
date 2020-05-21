@@ -17,15 +17,17 @@ public class NN implements AM {
 
             if(dataToTransf.trainable){
             
-//                BufferedWriter writerbuf = new BufferedWriter(new FileWriter("stacktrace", true));
-//                writerbuf.append("Predict");
-//                writerbuf.append(dataToTransf.predict);
-//                
-//                writerbuf.close();
+                BufferedWriter writerbuf = new BufferedWriter(new FileWriter("stacktrace", true));
+                writerbuf.append("Predict");
+                writerbuf.append(dataToTransf.predict);
+                
+                writerbuf.append(dataToTransf.hamstring);
+                
+                writerbuf.close();
             
                 
-                dataToTransf.train(dataToTransf.hamstring, true);
-                dataToTransf.train(dataToTransf.spamstring, false);
+//                dataToTransf.train(dataToTransf.hamstring, true);
+//                dataToTransf.train(dataToTransf.spamstring, false);
 //
                 
                     double fn = (double)dataToTransf.classify(dataToTransf.predict);
